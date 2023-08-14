@@ -13,7 +13,7 @@ import com.vesna1010.bookservice.repositories.CategoryRepository;
 import com.vesna1010.bookservice.services.CategoryService;
 
 @Transactional
-@Service
+@Service("categoryService")
 public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired
