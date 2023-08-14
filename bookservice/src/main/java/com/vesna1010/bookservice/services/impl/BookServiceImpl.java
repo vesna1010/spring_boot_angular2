@@ -12,7 +12,7 @@ import com.vesna1010.bookservice.repositories.BookRepository;
 import com.vesna1010.bookservice.services.BookService;
 
 @Transactional
-@Service
+@Service("bookService")
 public class BookServiceImpl implements BookService {
 
 	@Autowired
