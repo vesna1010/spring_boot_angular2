@@ -15,7 +15,7 @@ import com.vesna1010.bookservice.repositories.BookRepository;
 import com.vesna1010.bookservice.services.AuthorService;
 
 @Transactional
-@Service
+@Service("authorService")
 public class AuthorServiceImpl implements AuthorService {
 
 	@Autowired
