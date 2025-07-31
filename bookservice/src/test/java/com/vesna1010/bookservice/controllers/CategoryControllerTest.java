@@ -37,10 +37,10 @@ public class CategoryControllerTest extends BaseControllerTest {
 
 		mockMvc.perform(get("/categories"))
 		       .andExpect(status().isOk())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$", hasSize(2)))
-			   .andExpect(jsonPath("$[0].name", is("Category A")))
-			   .andExpect(jsonPath("$[1].name", is("Category B")));
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$", hasSize(2)))
+		       .andExpect(jsonPath("$[0].name", is("Category A")))
+		       .andExpect(jsonPath("$[1].name", is("Category B")));
 
 		verify(categoryService, times(1)).findAllCategories(SORT);
 	}
@@ -58,13 +58,13 @@ public class CategoryControllerTest extends BaseControllerTest {
 				.param("size", "10")
 				)
 		       .andExpect(status().isOk())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$.totalPages", is(1)))
-			   .andExpect(jsonPath("$.number", is(0)))
-			   .andExpect(jsonPath("$.size", is(10)))
-			   .andExpect(jsonPath("$.numberOfElements", is(2)))
-			   .andExpect(jsonPath("$.content[0].name", is("Category A")))
-			   .andExpect(jsonPath("$.content[1].name", is("Category B")));
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$.totalPages", is(1)))
+		       .andExpect(jsonPath("$.number", is(0)))
+		       .andExpect(jsonPath("$.size", is(10)))
+		       .andExpect(jsonPath("$.numberOfElements", is(2)))
+		       .andExpect(jsonPath("$.content[0].name", is("Category A")))
+		       .andExpect(jsonPath("$.content[1].name", is("Category B")));
 
 		verify(categoryService, times(1)).findAllCategories(PAGEABLE);
 	}
@@ -77,9 +77,9 @@ public class CategoryControllerTest extends BaseControllerTest {
 
 		mockMvc.perform(get("/categories/1"))
 		       .andExpect(status().isOk())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$.name", is("Category")))
-			   .andExpect(jsonPath("$.description", is("Description")));
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$.name", is("Category")))
+		       .andExpect(jsonPath("$.description", is("Description")));
 
 		verify(categoryService, times(1)).findCategoryById(1L);
 	}
@@ -96,10 +96,10 @@ public class CategoryControllerTest extends BaseControllerTest {
 				.content(OBJECT_MAPPER.writeValueAsString(category))
 				)
 		       .andExpect(status().isCreated())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$.id", is(1)))
-			   .andExpect(jsonPath("$.name", is("Category")))
-			   .andExpect(jsonPath("$.description", is("Description")));
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$.id", is(1)))
+		       .andExpect(jsonPath("$.name", is("Category")))
+		       .andExpect(jsonPath("$.description", is("Description")));
 
 		verify(categoryService, times(1)).saveCategory(category);
 	}
@@ -116,10 +116,10 @@ public class CategoryControllerTest extends BaseControllerTest {
 				.content(OBJECT_MAPPER.writeValueAsString(category))
 				)
 		       .andExpect(status().isOk())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$.id", is(1)))
-			   .andExpect(jsonPath("$.name", is("Category")))
-			   .andExpect(jsonPath("$.description", is("Description")));
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$.id", is(1)))
+		       .andExpect(jsonPath("$.name", is("Category")))
+		       .andExpect(jsonPath("$.description", is("Description")));
 
 		verify(categoryService, times(1)).updateCategory(category, 1L);
 	}
