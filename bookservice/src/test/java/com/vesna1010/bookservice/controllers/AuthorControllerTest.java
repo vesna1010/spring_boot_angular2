@@ -79,10 +79,10 @@ public class AuthorControllerTest extends BaseControllerTest {
 
 		mockMvc.perform(get("/authors/1"))
 		       .andExpect(status().isOk())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$.name", is("Author")))
-			   .andExpect(jsonPath("$.email", is("author@gmail.com")))
-			   .andExpect(jsonPath("$.description", is("Description")));
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$.name", is("Author")))
+		       .andExpect(jsonPath("$.email", is("author@gmail.com")))
+		       .andExpect(jsonPath("$.description", is("Description")));
 
 		verify(authorService, times(1)).findAuthorById(1L);
 	}
@@ -99,11 +99,11 @@ public class AuthorControllerTest extends BaseControllerTest {
 				.content(OBJECT_MAPPER.writeValueAsString(author))
 				)
 		       .andExpect(status().isCreated())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$.id", is(1)))
-			   .andExpect(jsonPath("$.name", is("Author")))
-			   .andExpect(jsonPath("$.email", is("author@gmail.com")))
-			   .andExpect(jsonPath("$.description", is("Description")));
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$.id", is(1)))
+		       .andExpect(jsonPath("$.name", is("Author")))
+		       .andExpect(jsonPath("$.email", is("author@gmail.com")))
+		       .andExpect(jsonPath("$.description", is("Description")));
 
 		verify(authorService, times(1)).saveAuthor(author);
 	}
@@ -120,11 +120,11 @@ public class AuthorControllerTest extends BaseControllerTest {
 				.content(OBJECT_MAPPER.writeValueAsString(author))
 				)
 		       .andExpect(status().isOk())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$.id", is(1)))
-			   .andExpect(jsonPath("$.name", is("Author")))
-			   .andExpect(jsonPath("$.email", is("author@gmail.com")))
-			   .andExpect(jsonPath("$.description", is("Description")));
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$.id", is(1)))
+		       .andExpect(jsonPath("$.name", is("Author")))
+		       .andExpect(jsonPath("$.email", is("author@gmail.com")))
+		       .andExpect(jsonPath("$.description", is("Description")));
 
 		verify(authorService, times(1)).updateAuthor(author, 1L);
 	}
