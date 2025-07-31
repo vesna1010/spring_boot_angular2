@@ -60,13 +60,13 @@ public class AuthorControllerTest extends BaseControllerTest {
 				.param("size", "10")
 				)
 		       .andExpect(status().isOk())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$.totalPages", is(1)))
-			   .andExpect(jsonPath("$.number", is(0)))
-			   .andExpect(jsonPath("$.size", is(10)))
-			   .andExpect(jsonPath("$.numberOfElements", is(2)))
-			   .andExpect(jsonPath("$.content[0].name", is("Author A")))
-			   .andExpect(jsonPath("$.content[1].name", is("Author B")));
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$.totalPages", is(1)))
+		       .andExpect(jsonPath("$.number", is(0)))
+		       .andExpect(jsonPath("$.size", is(10)))
+		       .andExpect(jsonPath("$.numberOfElements", is(2)))
+		       .andExpect(jsonPath("$.content[0].name", is("Author A")))
+		       .andExpect(jsonPath("$.content[1].name", is("Author B")));
 
 		verify(authorService, times(1)).findAllAuthors(PAGEABLE);
 	}
