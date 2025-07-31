@@ -45,13 +45,13 @@ public class BookControllerTest extends BaseControllerTest {
 
 		mockMvc.perform(get("/books"))
 		       .andExpect(status().isOk())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$.totalPages", is(1)))
-			   .andExpect(jsonPath("$.number", is(0)))
-			   .andExpect(jsonPath("$.size", is(10)))
-			   .andExpect(jsonPath("$.numberOfElements", is(2)))
-			   .andExpect(jsonPath("$.content[0].title", is("Book A")))
-			   .andExpect(jsonPath("$.content[1].title", is("Book B")));
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$.totalPages", is(1)))
+		       .andExpect(jsonPath("$.number", is(0)))
+		       .andExpect(jsonPath("$.size", is(10)))
+		       .andExpect(jsonPath("$.numberOfElements", is(2)))
+		       .andExpect(jsonPath("$.content[0].title", is("Book A")))
+		       .andExpect(jsonPath("$.content[1].title", is("Book B")));
 
 		verify(bookService, times(1)).findAllBooks(PAGEABLE);
 	}
@@ -74,13 +74,13 @@ public class BookControllerTest extends BaseControllerTest {
 				.param("categoryId", "1")
 				)
 		       .andExpect(status().isOk())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$.totalPages", is(1)))
-			   .andExpect(jsonPath("$.number", is(0)))
-			   .andExpect(jsonPath("$.size", is(10)))
-			   .andExpect(jsonPath("$.numberOfElements", is(2)))
-			   .andExpect(jsonPath("$.content[0].title", is("Book A")))
-			   .andExpect(jsonPath("$.content[1].title", is("Book B")));
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$.totalPages", is(1)))
+		       .andExpect(jsonPath("$.number", is(0)))
+		       .andExpect(jsonPath("$.size", is(10)))
+		       .andExpect(jsonPath("$.numberOfElements", is(2)))
+		       .andExpect(jsonPath("$.content[0].title", is("Book A")))
+		       .andExpect(jsonPath("$.content[1].title", is("Book B")));
 
 		verify(bookService, times(1)).findAllBooksByCategoryId(1L, PAGEABLE);
 	}
@@ -103,13 +103,13 @@ public class BookControllerTest extends BaseControllerTest {
 				.param("title", "Book")
 				)
 		       .andExpect(status().isOk())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$.totalPages", is(1)))
-			   .andExpect(jsonPath("$.number", is(0)))
-			   .andExpect(jsonPath("$.size", is(10)))
-			   .andExpect(jsonPath("$.numberOfElements", is(2)))
-			   .andExpect(jsonPath("$.content[0].title", is("Book A")))
-			   .andExpect(jsonPath("$.content[1].title", is("Book B")));
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$.totalPages", is(1)))
+		       .andExpect(jsonPath("$.number", is(0)))
+		       .andExpect(jsonPath("$.size", is(10)))
+		       .andExpect(jsonPath("$.numberOfElements", is(2)))
+		       .andExpect(jsonPath("$.content[0].title", is("Book A")))
+		       .andExpect(jsonPath("$.content[1].title", is("Book B")));
 
 		verify(bookService, times(1)).findAllBooksByTitle("Book", PAGEABLE);
 	}
@@ -133,13 +133,13 @@ public class BookControllerTest extends BaseControllerTest {
 				.param("language", "ENGLISH")
 				)
 		       .andExpect(status().isOk())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$.totalPages", is(1)))
-			   .andExpect(jsonPath("$.number", is(0)))
-			   .andExpect(jsonPath("$.size", is(10)))
-			   .andExpect(jsonPath("$.numberOfElements", is(2)))
-			   .andExpect(jsonPath("$.content[0].title", is("Book A")))
-			   .andExpect(jsonPath("$.content[1].title", is("Book B")));
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$.totalPages", is(1)))
+		       .andExpect(jsonPath("$.number", is(0)))
+		       .andExpect(jsonPath("$.size", is(10)))
+		       .andExpect(jsonPath("$.numberOfElements", is(2)))
+		       .andExpect(jsonPath("$.content[0].title", is("Book A")))
+		       .andExpect(jsonPath("$.content[1].title", is("Book B")));
 
 		verify(bookService, times(1)).findAllBooksByTitleAndLanguage("Book", Language.ENGLISH, PAGEABLE);
 	}
@@ -154,13 +154,13 @@ public class BookControllerTest extends BaseControllerTest {
 
 		mockMvc.perform(get("/books/1"))
 		       .andExpect(status().isOk())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$.title", is("Book")))
-			   .andExpect(jsonPath("$.isbn", is("978-1-4842-3197-5")))
-			   .andExpect(jsonPath("$.language", is("ENGLISH")))
-			   .andExpect(jsonPath("$.category.name", is("Category")))
-			   .andExpect(jsonPath("$.authors[0].name", is("Author")))
-			   .andExpect(jsonPath("$.description", is("Description")));
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$.title", is("Book")))
+		       .andExpect(jsonPath("$.isbn", is("978-1-4842-3197-5")))
+		       .andExpect(jsonPath("$.language", is("ENGLISH")))
+		       .andExpect(jsonPath("$.category.name", is("Category")))
+		       .andExpect(jsonPath("$.authors[0].name", is("Author")))
+		       .andExpect(jsonPath("$.description", is("Description")));
 
 		verify(bookService, times(1)).findBookById(1L);
 	}
@@ -175,8 +175,8 @@ public class BookControllerTest extends BaseControllerTest {
 
 		mockMvc.perform(get("/books/1/content"))
 		       .andExpect(status().isOk())
-			   .andExpect(content().contentType(MediaType.APPLICATION_OCTET_STREAM))
-			   .andExpect(jsonPath("$", notNullValue()));
+		       .andExpect(content().contentType(MediaType.APPLICATION_OCTET_STREAM))
+		       .andExpect(jsonPath("$", notNullValue()));
 
 		verify(bookService, times(1)).findBookById(1L);
 	}
@@ -196,15 +196,15 @@ public class BookControllerTest extends BaseControllerTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(OBJECT_MAPPER.writeValueAsString(book))
 				)
-			   .andExpect(status().isCreated())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$.id", is(1)))
-			   .andExpect(jsonPath("$.title", is("Book")))
-			   .andExpect(jsonPath("$.isbn", is("978-1-4842-3197-5")))
-			   .andExpect(jsonPath("$.language", is("ENGLISH")))
-			   .andExpect(jsonPath("$.category.name", is("Category")))
-			   .andExpect(jsonPath("$.authors[0].name", is("Author")))
-			   .andExpect(jsonPath("$.description", is("Description")));
+		       .andExpect(status().isCreated())
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$.id", is(1)))
+		       .andExpect(jsonPath("$.title", is("Book")))
+		       .andExpect(jsonPath("$.isbn", is("978-1-4842-3197-5")))
+		       .andExpect(jsonPath("$.language", is("ENGLISH")))
+		       .andExpect(jsonPath("$.category.name", is("Category")))
+		       .andExpect(jsonPath("$.authors[0].name", is("Author")))
+		       .andExpect(jsonPath("$.description", is("Description")));
 
 		verify(bookService, times(1)).saveBook(book);
 	}
@@ -222,15 +222,15 @@ public class BookControllerTest extends BaseControllerTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(OBJECT_MAPPER.writeValueAsString(book))
 				)
-			   .andExpect(status().isOk())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$.id", is(1)))
-			   .andExpect(jsonPath("$.title", is("Book")))
-			   .andExpect(jsonPath("$.isbn", is("978-1-4842-3197-5")))
-			   .andExpect(jsonPath("$.language", is("ENGLISH")))
-			   .andExpect(jsonPath("$.category.name", is("Category")))
-			   .andExpect(jsonPath("$.authors[0].name", is("Author")))
-			   .andExpect(jsonPath("$.description", is("Description")));
+		       .andExpect(status().isOk())
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$.id", is(1)))
+		       .andExpect(jsonPath("$.title", is("Book")))
+		       .andExpect(jsonPath("$.isbn", is("978-1-4842-3197-5")))
+		       .andExpect(jsonPath("$.language", is("ENGLISH")))
+		       .andExpect(jsonPath("$.category.name", is("Category")))
+		       .andExpect(jsonPath("$.authors[0].name", is("Author")))
+		       .andExpect(jsonPath("$.description", is("Description")));
 
 		verify(bookService, times(1)).updateBook(book, 1L);
 	}
