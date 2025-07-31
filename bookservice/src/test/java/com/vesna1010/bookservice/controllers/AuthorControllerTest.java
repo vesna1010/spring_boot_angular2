@@ -37,10 +37,10 @@ public class AuthorControllerTest extends BaseControllerTest {
 
 		mockMvc.perform(get("/authors"))
 		       .andExpect(status().isOk())
-			   .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			   .andExpect(jsonPath("$", hasSize(2)))
-			   .andExpect(jsonPath("$[0].name", is("Author A")))
-			   .andExpect(jsonPath("$[1].name", is("Author B")));
+		       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(jsonPath("$", hasSize(2)))
+		       .andExpect(jsonPath("$[0].name", is("Author A")))
+		       .andExpect(jsonPath("$[1].name", is("Author B")));
 
 		verify(authorService, times(1)).findAllAuthors(SORT);
 	}
